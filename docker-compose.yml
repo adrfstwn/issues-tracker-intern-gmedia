@@ -16,7 +16,7 @@ services:
     build:
       context: ./vue
     ports:
-      - "8082:8082"
+      - "8082:8080"
     depends_on:
       - issues-tracker-backend
     networks:
@@ -26,7 +26,7 @@ networks:
   issues-tracker-network:
     name: issues-tracker-network
     driver: bridge
-    
+
   postgres-network:
     name: postgres-network
     external: true
