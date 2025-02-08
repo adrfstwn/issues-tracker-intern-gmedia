@@ -9,6 +9,7 @@ services:
     networks:
       - issues-tracker-network
       - postgres-network
+    restart: always
 
   issues-tracker-frontend:
     container_name: issues-tracker-frontend
@@ -21,6 +22,7 @@ services:
       - issues-tracker-backend
     networks:
       - issues-tracker-network
+    restart: always
 
 networks:
   issues-tracker-network:

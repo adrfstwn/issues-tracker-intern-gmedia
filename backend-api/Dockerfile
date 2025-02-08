@@ -1,5 +1,8 @@
 FROM dunglas/frankenphp
 
+# Install supervisord
+RUN apt-get update && apt-get install -y supervisor
+
 RUN install-php-extensions \
     pcntl \
     zip \
