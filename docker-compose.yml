@@ -1,0 +1,23 @@
+services:
+  issues-tracker-backend:
+    build: 
+      context: ./backend-api
+    ports:
+    - "8081:8081"
+    networks:
+      - issues-tracker-networks
+
+  issues-tracker-frontend:
+    build:
+      context: ./vue
+    ports:
+      - "8082:8082"
+    depends_on:
+      - issues-tracker-backend
+    networks:
+      - issues-tracker-networks
+
+networks:
+  issues-tracker-network:
+    name: issues-tracker-network
+    driver: bridge
