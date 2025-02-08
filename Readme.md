@@ -39,9 +39,3 @@
     ```bash
     npm run dev
     ```
-
-## Deployment with Docker Compose
-1. Jalankan Docker Compose untuk Build:
-    ```bash
-    docker-compose down --rmi all && docker-compose up --build -d
-    ```
