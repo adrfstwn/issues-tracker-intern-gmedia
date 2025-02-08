@@ -9,6 +9,7 @@ services:
     networks:
       - issues-tracker-network
       - postgres-network
+      - nginx-network
     restart: always
 
   issues-tracker-frontend:
@@ -20,6 +21,7 @@ services:
       - "8082:8080"
     networks:
       - issues-tracker-network
+      - nginx-network
     restart: always
 
 networks:
@@ -30,3 +32,9 @@ networks:
   postgres-network:
     name: postgres-network
     external: true
+
+  nginx-network:
+    name: nginx-network
+    external: true
+
+  
