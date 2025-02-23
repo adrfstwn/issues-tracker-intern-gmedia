@@ -24,6 +24,9 @@ RUN composer install --no-dev --optimize-autoloader
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 
+# Install Octane dan set servernya ke FrankenPHP
+RUN echo "yes" | php artisan octane:install --server=frankenphp
+
 # ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 
 # Copy konfigurasi Supervisor
