@@ -13,6 +13,7 @@ pipeline {
                     sh """
                     echo "Cleaning workspace..."
                     rm -rf issues-tracker-intern-gmedia || true
+                    rm -rf issue-tracker-intern-gmedia || true
                     """
                     withCredentials([usernamePassword(credentialsId: 'github-auth-to-jenkins', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                         sh """
