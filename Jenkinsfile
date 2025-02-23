@@ -17,7 +17,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'github-auth-to-jenkins', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                         sh """
                         echo "Cloning repository with authentication..."
-                        git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/adrfstwn/issue-tracker-intern-gmedia.git -b ${GIT_BRANCH}
+                        git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/adrfstwn/issues-tracker-intern-gmedia.git -b ${GIT_BRANCH}
                         """
                     }
                 }
