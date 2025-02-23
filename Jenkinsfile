@@ -42,27 +42,32 @@ pipeline {
                 }
             }
         }
-        stage('Stop Running Containers') {
+        stage('Stop Running Containers & Remove Old Images') {
             steps {
                 script {
                     sh """
-                    echo "Stopping running container..."
+                    echo "Stopping running containers..."
                     
                     cd issues-tracker-intern-gmedia
                     
-                    if docker ps -a | grep dukcapil-laravel; then
-                        docker compose down || true
+                    docker compose down || true
+                    
+                    echo "Checking and removing old backend and frontend images..."
+                    
+                    OLD_BACKEND_IMAGE=\$(docker images -q ${DOCKER_IMAGE_NAME_BACKEND})
+                    OLD_FRONTEND_IMAGE=\$(docker images -q ${DOCKER_IMAGE_NAME_FRONTEND})
+
+                    if [ ! -z "\$OLD_BACKEND_IMAGE" ]; then
+                        echo "Deleting old backend image..."
+                        docker rmi -f \$OLD_BACKEND_IMAGE
                     fi
 
-                    echo "Checking if old image exists..."
-                    OLD_IMAGE_ID=\$(docker images -q ${DOCKER_IMAGE_NAME})
-
-                    if [ ! -z "\$OLD_IMAGE_ID" ]; then
-                        echo "Deleting old image..."
-                        docker rmi -f \$OLD_IMAGE_ID
-                    else
-                        echo "No old image found, skipping delete step."
+                    if [ ! -z "\$OLD_FRONTEND_IMAGE" ]; then
+                        echo "Deleting old frontend image..."
+                        docker rmi -f \$OLD_FRONTEND_IMAGE
                     fi
+
+                    echo "Finished cleaning up old images."
                     """
                 }
             }
