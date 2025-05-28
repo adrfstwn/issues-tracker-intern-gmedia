@@ -1,6 +1,6 @@
 # SEFRUIT DOKUMENTASI PROJECT GMEDIA INTEGRASI SENTRY DAN OPEN PROJECT
 
-## Run Project Backend API
+## Run Project Backend API:
 1. Buka direktori `backend-api`:
     ```bash
     cd backend-api
@@ -26,7 +26,7 @@
     php artisan queue:work 
     ```
 
-## Run Project Frontend API
+## Run Project Frontend API:
 1. Buka direktori `vue`:
     ```bash
     cd vue
